@@ -1,9 +1,10 @@
+import Herocard from '@/components/Hero';
 import React from 'react';
 
 const page = () => {
   return (
     <div>
-      <h1>Welcome to the Home Page</h1>
+      <Herocard/>
     </div>
   );
 };
