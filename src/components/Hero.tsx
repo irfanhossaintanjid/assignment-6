@@ -4,9 +4,7 @@ import benner from '@/assets/banner.png'
 
 const Herocard = () => {
     return (
-       <div className="container mx-auto grid grid-cols-2 items-center gap-8 rounded-2xl bg-[#222630] p-5 sm:p-8 md:grid-cols-2 md:p-10">
-
-  
+       <div className="container mx-auto grid grid-cols-1 items-center gap-8 rounded-2xl bg-[#222630] p-5 sm:p-8 md:grid-cols-2 md:p-10">
   <div>
     <p className="mb-3 text-xs font-bold  text-[#c2f800] sm:text-sm">
       WORKOUT LIBRARY
@@ -29,7 +27,6 @@ const Herocard = () => {
     </a>
   </div>
 
-  
   <div className="flex justify-center md:justify-end">
     <Image
       src={benner}
