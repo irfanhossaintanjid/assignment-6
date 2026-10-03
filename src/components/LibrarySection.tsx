@@ -25,7 +25,7 @@ export default function LibrarySection() {
 
   if (loading) {
     return (
-      <div className="flex justify-center py-20">
+      <div id="library" className="flex justify-center py-20">
         <span className="loading loading-spinner loading-lg text-info"></span>
       </div>
     );

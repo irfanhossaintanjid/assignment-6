@@ -17,7 +17,7 @@ const Footer = () => {
         className="h-8 w-8 object-contain"
       />
 
-      <span className="ml-2 text-lg font-bold text-gray-400">
+      <span className="ml-2 text-lg font-bold ">
         FITLOG
       </span>
     </div>
