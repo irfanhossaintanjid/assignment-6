@@ -194,13 +194,13 @@ if (!workout) {
   // disabled={isPlanFull || isAlreadyInPlan}
   className="bg-[#c2f800] text-black hover:bg-lime-400 disabled:opacity-50 px-4 py-2 rounded-md"
 >
-  {isAlreadyInPlan ? "Already in Plan" : isPlanFull ? "Plan Full" :<span className="flex justify-between items-center"> <LuClipboardPlus className="size-4" />Add to today's plan</span>}
+  {isAlreadyInPlan ? "Already in Plan" : isPlanFull ? "Plan Full" :<span className="flex justify-between gap-2 items-center"> <LuClipboardPlus className="size-4" />Add to today's plan</span>}
   
 </button>
 
 <button onClick={() => addToSaved(workout)} className="bg-[#222630] border border-gray-500 btn btn-sm btn-outline rounded-md   text-white hover:bg-gray-500  px-4 py-2">
  
-  {isAlreadySave ? "Already saved" :<span className="flex justify-center items-center"> <LuBookmark className="size-4" /> Save for later</span>}
+  {isAlreadySave ? "Already saved" :<span className="flex justify-center items-center gap-2"> <LuBookmark className="size-4" /> Save for later</span>}
 </button>
 
       </div>
