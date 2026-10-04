@@ -70,11 +70,11 @@ const markAsDone = (id: number) => {
   };
 
 
-  const all = [...plan, ...saved];
+
  const metrics = {
-    exercises: all.length,
-    minutes: all.reduce((total, item) => total + item.duration, 0),
-    calories: all.reduce((total, item) => total + item.caloriesBurned, 0),
+    exercises: plan.length,
+    minutes: plan.reduce((total, item) => total + item.duration, 0),
+    calories: plan.reduce((total, item) => total + item.caloriesBurned, 0),
   };
 
 

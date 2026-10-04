@@ -35,7 +35,7 @@ export default function LibrarySection() {
     <section id="library" className="container mx-auto p-5 my-16 scroll-mt-20">
       <div>
         <h2 className="text-2xl font-bold lg:text-3xl">THE LIBRARY</h2>
-        <p className="mt-5 max-w-xl text-sm leading-6 text-gray-400 sm:text-base">
+        <p className="mt-5 max-w-xl text-sm  text-gray-400 sm:text-base">
           Twelve lifts covering every major muscle group.
         </p>
       </div>

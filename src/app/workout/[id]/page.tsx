@@ -61,10 +61,10 @@ if (!workout) {
  return (
   
    <section className="container  mx-auto px-5 py-15 bg-[#15171d]">
-  <div className="card lg:card-side gap-8 bg-transparent shadow-none">
+  <div className="card lg:card-side gap-8 ">
 
     
-    <div className="relative aspect-[4/5] w-full shrink-0 overflow-hidden rounded-2xl lg:w-[35%]">
+    <div className="relative aspect-[4/5] w-full  overflow-hidden rounded-2xl lg:w-[35%]">
       <Image
         src={workout.image}
         alt={workout.name}
@@ -192,13 +192,14 @@ if (!workout) {
 <button
   onClick={() => addToPlan(workout)}
   // disabled={isPlanFull || isAlreadyInPlan}
-  className="bg-[#c2f800] text-black hover:bg-lime-400 disabled:opacity-50 px-4 py-2 rounded-md"
+  className={`bg-[#c2f800] text-black   px-4 py-2   rounded-md ${isAlreadyInPlan ? "bg-gray-800" : "bg-[#c2f800]  hover:bg-lime-600"}`}
 >
+
   {isAlreadyInPlan ? "Already in Plan" : isPlanFull ? "Plan Full" :<span className="flex justify-between gap-2 items-center"> <LuClipboardPlus className="size-4" />Add to today's plan</span>}
   
 </button>
 
-<button onClick={() => addToSaved(workout)} className="bg-[#222630] border border-gray-500 btn btn-sm btn-outline rounded-md   text-white hover:bg-gray-500  px-4 py-2">
+<button onClick={() => addToSaved(workout)} className={`bg-[#222630]   rounded-md   hover:bg-gray-500  px-4 py-2  ${isAlreadySave ? "bg-gray-800 text-black" : "bg-[#222630] hover:bg-gray-500 border border-gray-500  text-white"}`}>
  
   {isAlreadySave ? "Already saved" :<span className="flex justify-center items-center gap-2"> <LuBookmark className="size-4" /> Save for later</span>}
 </button>

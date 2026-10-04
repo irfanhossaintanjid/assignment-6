@@ -40,16 +40,16 @@ export default function WorkoutCard({ workout }: { workout: Workout }) {
         <p className="mt-1 text-xs text-gray-400">{workout.equipment}</p>
 
         
-        <div className="mt-4 flex items-center gap-2 rounded-md border border-white/5 px-3 py-2 text-xs text-gray-400">
-          <span className="flex items-center gap-1.5">
+        <div className="mt-4 flex items-center gap-4 rounded-md border border-white/5 px-3 py-2 text-xs text-gray-400">
+          <span className="flex items-center gap-2">
             <LuClock className="size-3.5" />
             {workout.duration} min
           </span>
-          <span className="flex items-center gap-1.5">
+          <span className="flex items-center gap-2">
             <LuFlame className="size-3.5" />
             {workout.caloriesBurned} kcal
           </span>
-          <span className="flex items-center gap-1.5">
+          <span className="flex items-center gap-2">
             <LuStar className="size-3.5" />
             {workout.rating}
           </span>
