@@ -1,6 +1,6 @@
 "use client";
 
-import React from 'react';
+import React, { useEffect } from 'react';
 import { createContext, useContext, useState } from "react";
 import { Workout, PlanWorkout } from "@/types";
 import toast from "react-hot-toast";
@@ -25,8 +25,40 @@ const PlanContext = createContext<PlanContextType | null>(null);
 
 
 export function PlanProvider({ children }: { children: React.ReactNode }) {
+const [isHydrated, setIsHydrated] = useState(false);
+
 const [plan, setPlan] = useState<PlanWorkout[]>([]);
   const [saved, setSaved] = useState<Workout[]>([]);
+
+
+
+  useEffect(() => {
+  const storedPlan = localStorage.getItem("fitlog-plan");
+  const storedSaved = localStorage.getItem("fitlog-saved");
+
+  if (storedPlan) setPlan(JSON.parse(storedPlan));
+  if (storedSaved) setSaved(JSON.parse(storedSaved));
+
+  setIsHydrated(true);
+  // ☝️ এখন বুঝবে — client-এ localStorage data load হয়ে গেছে
+}, []);
+
+
+
+useEffect(() => {
+  if (isHydrated) {
+    
+    localStorage.setItem("fitlog-plan", JSON.stringify(plan));
+  }
+}, [plan, isHydrated]);
+
+useEffect(() => {
+  if (isHydrated) {
+  
+    localStorage.setItem("fitlog-saved", JSON.stringify(saved));
+  }
+}, [saved, isHydrated]);
+
    const addToPlan = (workout: Workout) => {
     
     if (plan.length >= 5) {
