@@ -75,13 +75,13 @@ const currentList = activeTab === "plan" ? plan : saved as PlanWorkout[];
       </div>
 
       
-      <div className="mt-10 flex flex-col items-center justify-between gap-4 sm:flex-row">
+      <div className="mt-10 flex flex-col items-center justify-between gap-4  sm:flex-row">
         
-        <div className="tabs tabs-box grid w-full grid-cols-2 rounded-xl sm:mb-10 sm:w-[270px]">
+        <div className="tabs tabs-box bg-[#1D232A] grid w-full grid-cols-2 rounded-xl sm:mb-10 sm:w-[270px]">
           <input
             type="radio"
             name="my_tabs_1"
-            className={`tab rounded-xl font-bold ${activeTab === "plan" ? "bg-gray-700 text-[#ccff00]" : "bg-[#222630]  hover:bg-gray-800"}`}
+            className={`tab rounded-xl font-bold ${activeTab === "plan" ? "bg-gray-700 text-[#ccff00]" : "bg-[#222630]  hover:bg-gray-800 text-gray-400"}`}
             aria-label="Today's Plan"
             checked={activeTab === "plan"}
             onChange={() => setActiveTab("plan")}
@@ -89,7 +89,7 @@ const currentList = activeTab === "plan" ? plan : saved as PlanWorkout[];
           <input
             type="radio"
             name="my_tabs_1"
-            className={`tab rounded-xl font-bold ${activeTab === "saved" ? "bg-gray-700 text-[#ccff00]" : "bg-[#222630]  hover:bg-gray-800"}`}
+            className={`tab rounded-xl font-bold ${activeTab === "saved" ? "bg-gray-700 text-[#ccff00]" : "bg-[#222630] text-gray-400 hover:bg-gray-800"}`}
             aria-label="Saved"
             checked={activeTab === "saved"}
             onChange={() => setActiveTab("saved")}
@@ -99,13 +99,13 @@ const currentList = activeTab === "plan" ? plan : saved as PlanWorkout[];
       
         <div className="flex w-full mb-3 items-center justify-between  gap-2 sm:w-auto sm:justify-start sm:mb-10">
           Sort By 
-          <div className="dropdown dropdown-left dropdown-end  ">
-            <div tabIndex={0} role="button" className="btn m-1 bg-[#222630] rounded-xl border border-gray-200 pe-20">
-              <LuChevronLeft />{sortBy}
+          <div className="dropdown dropdown-bottom md:dropdown-left dropdown-end  ">
+            <div tabIndex={0} role="button" className="btn m-1 bg-[#222630] text-white rounded-xl border border-gray-200 pe-20">
+              <LuChevronLeft className="rotate-270 md:rotate-0" />{sortBy}
             </div>
             <ul
               tabIndex={-1}
-              className="dropdown-content menu bg-base-100 rounded-box z-1 w-52 p-2 shadow-sm"
+              className="dropdown-content menu bg-[#1D232A] rounded-box z-1 w-52 p-2  shadow-sm"
             >
               <li><a onClick={() => setSortBy("duration")}>duration</a></li>
               <li><a onClick={() => setSortBy("calories")}>calories</a></li>
@@ -135,7 +135,7 @@ const currentList = activeTab === "plan" ? plan : saved as PlanWorkout[];
               key={workout.id}
               className="flex items-center gap-4 rounded-xl border border-white/10 bg-[#222630] p-4"
             >
-              <div className="relative aspect-[4/5] w-20 shrink-0 overflow-hidden rounded-lg">
+              <div className="relative aspect-4/5 w-20 shrink-0 overflow-hidden rounded-lg">
                 <Image
                   src={workout.image}
                   alt={workout.name}
@@ -171,7 +171,7 @@ const currentList = activeTab === "plan" ? plan : saved as PlanWorkout[];
                 <div className="flex flex-wrap items-center gap-2">
                   <Link
                     href={`/workout/${workout.id}`}
-                    className="btn btn-sm btn-outline rounded-2xl border border-gray-500 px-4 py-2 font-bold hover:bg-gray-800"
+                    className="btn btn-sm btn-outline rounded-2xl border text-white border-gray-500 px-4 py-2 font-bold hover:bg-gray-700"
                   >
                     View Details
                   </Link>
@@ -180,7 +180,7 @@ const currentList = activeTab === "plan" ? plan : saved as PlanWorkout[];
                      <button
                       onClick={() => markAsDone(workout.id)}
                        disabled={workout.isDone}
-                     className="btn btn-sm rounded-2xl  bg-[#ccff00] px-4 font-bold text-black hover:bg-[#ccff00]/70 disabled:bg-gray-700  disabled:text-gray-400 "
+                     className="btn btn-sm rounded-2xl  bg-[#ccff00] px-4 font-bold text-black hover:bg-[#ccff00]/60 disabled:bg-[#6d7c2f] "
                         >
                     {workout.isDone ? "Done ✓" : "Mark as Done"}
                         </button>
@@ -192,7 +192,7 @@ const currentList = activeTab === "plan" ? plan : saved as PlanWorkout[];
                         ? removeFromPlan(workout.id)
                         : removeFromSaved(workout.id)
                     }
-                    className="btn  btn-outline hover:bg-[#ccff00] hover:text-black  rounded-full px-4 font-bold"
+                    className="btn  btn-outline border-white text-white hover:bg-[#ccff00] hover:text-black  rounded-full px-4 font-bold"
                   >
                     ✕
                   </button>

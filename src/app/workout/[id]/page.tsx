@@ -68,7 +68,7 @@ if (!workout) {
   <div className="card lg:card-side gap-8 ">
 
     
-    <div className="relative aspect-[4/5] w-full  overflow-hidden rounded-2xl lg:w-[35%]">
+    <div className="relative aspect-4/5 w-full  overflow-hidden rounded-2xl lg:w-[35%]">
       <Image
         src={workout.image}
         alt={workout.name}
@@ -196,10 +196,10 @@ if (!workout) {
 <button
   onClick={() => addToPlan(workout)}
   // disabled={isPlanFull || isAlreadyInPlan}
-  className={`bg-[#ccff00] text-black font-bold  px-4 py-2   rounded-md ${isAlreadyInPlan ? "bg-gray-700 text-gray-400 " : "bg-[#ccff00]  hover:bg-lime-600"}`}
+  className={` text-black font-bold     rounded-md ${isPlanFull && "bg-[#6d7c2f] px-4 py-2"} ${isAlreadyInPlan && "bg-gray-700 text-gray-400 px-4 py-2"} `}
 >
 
-  {isAlreadyInPlan ? "Already in Plan ✓" : isPlanFull ? `"Plan Full"` :<span className="flex justify-between gap-2 items-center "> <LuClipboardPlus className="size-4 " />Add to today's plan</span>}
+  {isAlreadyInPlan ? "Already in Plan ✓" : isPlanFull ? "Plan Full" :<span className="flex justify-between gap-2 items-center px-4 py-2 rounded-md hover:bg-[#ccff00]/60 bg-[#ccff00]"> <LuClipboardPlus className="size-4 " />Add to today's plan</span>}
   
 </button>
 

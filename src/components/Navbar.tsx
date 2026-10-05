@@ -65,7 +65,7 @@ export default function Navbar() {
         
           
         
-        <label className="btn btn-circle swap swap-rotate md:hidden">
+        <label className="btn btn-circle bg-[#273009] text-[#ccff00] swap swap-rotate md:hidden">
   <input
     type="checkbox"
     checked={isOpen}
