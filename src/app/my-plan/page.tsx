@@ -1,16 +1,19 @@
 "use client";
-import { LuDumbbell, LuClock, LuFlame, LuStar } from "react-icons/lu";
+import { LuChevronLeft, LuDumbbell, LuClock, LuFlame, LuStar } from "react-icons/lu";
+
 import { usePlan } from "@/context/PlanContext";
 import { useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
+import { PlanWorkout } from "@/types";
+
 
 export default function MyPlanPage() {
-  const { metrics } = usePlan();
+  
+  const { isHydrated, metricsPlan,metricssaved } = usePlan();
   const [activeTab, setActiveTab] = useState<"plan" | "saved">("plan");
   const { plan, saved, markAsDone, removeFromPlan, removeFromSaved } = usePlan();
-
-  const currentList = activeTab === "plan" ? plan : saved;
+const currentList = activeTab === "plan" ? plan : saved as PlanWorkout[];
 
   const [sortBy, setSortBy] = useState("duration");
 
@@ -21,6 +24,24 @@ export default function MyPlanPage() {
     return 0;
   });
 
+  
+
+  if (!isHydrated) {
+  return (
+    <div>
+    <div id="library" className="flex justify-center py-20">
+        <span className="loading loading-spinner loading-lg text-info"></span>
+    </div>
+    <div className="py-12 text-center text-gray-400">
+      Loading workouts...
+    </div>
+    </div>
+  );
+}
+
+   
+  
+
   return (
     <section className="container mx-auto px-5 py-12">
       <h1 className=" text-3xl font-bold uppercase lg:text-4xl">
@@ -30,26 +51,26 @@ export default function MyPlanPage() {
         Cap of five lifts for today. Finish them, then load more.
       </p>
 
-      <div className="mt-10 grid grid-cols-1 gap-4 sm:grid-cols-3 rounded-xl border border-white/10">
-        <div className="bg-[#14161b] p-5">
+      <div className="mt-10 grid grid-cols-1 gap-4 sm:grid-cols-3 bg-[#222630] rounded-xl border border-white/10">
+        <div className="bg-[#222630] p-5 rounded-xl">
           <p className="flex items-center gap-2 text-xs uppercase text-gray-400">
             <LuDumbbell className="size-5" /> Exercises
           </p>
-          <h3 className="mt-2 text-4xl font-bold text-white">{metrics.exercises}</h3>
+          <h3 className="mt-2 text-4xl font-bold  text-[#ccff00]">{activeTab === "plan"? metricsPlan.exercises :metricssaved.exercises}</h3>
         </div>
 
-        <div className="bg-[#14161b] p-5">
+        <div className="bg-[#222630] p-5 rounded-xl">
           <p className="flex items-center gap-2 text-xs uppercase text-gray-400">
             <LuClock className="size-5" /> Minutes
           </p>
-          <h3 className="mt-2 text-4xl font-bold text-white">{metrics.minutes}</h3>
+          <h3 className="mt-2 text-4xl font-bold text-white">{activeTab === "plan"?metricsPlan.minutes:metricssaved.minutes}</h3>
         </div>
 
-        <div className="bg-[#14161b] p-5">
+        <div className="bg-[#222630] p-5 rounded-xl">
           <p className="flex items-center gap-2 text-xs uppercase text-gray-400">
             <LuFlame className="size-5" /> Calories
           </p>
-          <h3 className="mt-2 text-4xl font-bold text-white">{metrics.calories}</h3>
+          <h3 className="mt-2 text-4xl font-bold text-white">{activeTab === "plan"?metricsPlan.calories:metricssaved.calories}</h3>
         </div>
       </div>
 
@@ -60,7 +81,7 @@ export default function MyPlanPage() {
           <input
             type="radio"
             name="my_tabs_1"
-            className="tab rounded-xl font-bold"
+            className={`tab rounded-xl font-bold ${activeTab === "plan" ? "bg-gray-700 text-[#ccff00]" : "bg-[#222630]  hover:bg-gray-800"}`}
             aria-label="Today's Plan"
             checked={activeTab === "plan"}
             onChange={() => setActiveTab("plan")}
@@ -68,7 +89,7 @@ export default function MyPlanPage() {
           <input
             type="radio"
             name="my_tabs_1"
-            className="tab rounded-xl font-bold"
+            className={`tab rounded-xl font-bold ${activeTab === "saved" ? "bg-gray-700 text-[#ccff00]" : "bg-[#222630]  hover:bg-gray-800"}`}
             aria-label="Saved"
             checked={activeTab === "saved"}
             onChange={() => setActiveTab("saved")}
@@ -76,11 +97,11 @@ export default function MyPlanPage() {
         </div>
 
       
-        <div className="flex w-full items-center justify-between gap-2 sm:w-auto sm:justify-start sm:mb-10">
-          Sort By{" "}
-          <div className="dropdown dropdown-left dropdown-end">
-            <div tabIndex={0} role="button" className="btn m-1">
-              ⬅️ {sortBy}
+        <div className="flex w-full mb-3 items-center justify-between  gap-2 sm:w-auto sm:justify-start sm:mb-10">
+          Sort By 
+          <div className="dropdown dropdown-left dropdown-end  ">
+            <div tabIndex={0} role="button" className="btn m-1 bg-[#222630] rounded-xl border border-gray-200 pe-20">
+              <LuChevronLeft />{sortBy}
             </div>
             <ul
               tabIndex={-1}
@@ -95,7 +116,7 @@ export default function MyPlanPage() {
       </div>
 
       {sortedList.length === 0 ? (
-        <div className="py-16 text-center">
+        <div className="py-16 text-center border-2 rounded-xl  border-dashed border-gray-700">
           <h2 className="text-xl font-bold uppercase text-white">NOTHING HERE YET</h2>
           <p className="mt-2 text-sm text-gray-400">
             Browse the library and add a lift to get today moving.
@@ -104,7 +125,7 @@ export default function MyPlanPage() {
             href="/#library"
             className="mt-6 inline-block rounded-lg bg-lime-400 px-5 py-2.5 text-sm font-bold text-black hover:bg-lime-300"
           >
-            Browse the library
+            Go to workouts
           </Link>
         </div>
       ) : (
@@ -112,7 +133,7 @@ export default function MyPlanPage() {
           {sortedList.map((workout) => (
             <div
               key={workout.id}
-              className="flex items-center gap-4 rounded-xl border border-white/10 bg-[#14161b] p-4"
+              className="flex items-center gap-4 rounded-xl border border-white/10 bg-[#222630] p-4"
             >
               <div className="relative aspect-[4/5] w-20 shrink-0 overflow-hidden rounded-lg">
                 <Image
@@ -154,11 +175,12 @@ export default function MyPlanPage() {
                   >
                     View Details
                   </Link>
-             {activeTab === "plan" && "isDone" in workout && (
+                 
+             {activeTab === "plan" && workout.isDone !== undefined && (
                      <button
                       onClick={() => markAsDone(workout.id)}
                        disabled={workout.isDone}
-                     className="btn btn-sm rounded-2xl  bg-[#c2f800] px-4 font-bold text-black hover:bg-[#c2f800]/70 disabled:bg-gray-800  disabled:text-black "
+                     className="btn btn-sm rounded-2xl  bg-[#ccff00] px-4 font-bold text-black hover:bg-[#ccff00]/70 disabled:bg-gray-700  disabled:text-gray-400 "
                         >
                     {workout.isDone ? "Done ✓" : "Mark as Done"}
                         </button>
@@ -170,7 +192,7 @@ export default function MyPlanPage() {
                         ? removeFromPlan(workout.id)
                         : removeFromSaved(workout.id)
                     }
-                    className="btn btn-sm btn-outline btn-error rounded-2xl px-4 font-bold"
+                    className="btn  btn-outline hover:bg-[#ccff00] hover:text-black  rounded-full px-4 font-bold"
                   >
                     ✕
                   </button>

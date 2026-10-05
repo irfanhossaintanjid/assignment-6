@@ -25,10 +25,15 @@ export default function LibrarySection() {
 
   if (loading) {
     return (
-      <div id="library" className="flex justify-center py-20">
+    <div className=" ">
+    <div id="library" className="flex justify-center py-20">
         <span className="loading loading-spinner loading-lg text-info"></span>
-      </div>
-    );
+    </div>
+    <div className="py-12 text-center text-gray-400">
+      Loading workouts...
+    </div>
+    </div>
+  );
   }
 
   return (
@@ -46,5 +51,6 @@ export default function LibrarySection() {
         ))}
       </div>
     </section>
+   
   );
 }

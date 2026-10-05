@@ -7,6 +7,7 @@ import toast from "react-hot-toast";
 
 
 interface PlanContextType {
+  isHydrated: boolean;
   plan: PlanWorkout[];   
   saved: Workout[];              
   addToPlan: (workout: Workout) => void;
@@ -14,7 +15,12 @@ interface PlanContextType {
   removeFromPlan: (id: number) => void;     
   removeFromSaved: (id: number) => void;    
   markAsDone: (id: number) => void;    
-    metrics: {                                
+    metricsPlan: {                                
+    exercises: number;
+    minutes: number;
+    calories: number;
+  };
+    metricssaved: {                                
     exercises: number;
     minutes: number;
     calories: number;
@@ -40,7 +46,7 @@ const [plan, setPlan] = useState<PlanWorkout[]>([]);
   if (storedSaved) setSaved(JSON.parse(storedSaved));
 
   setIsHydrated(true);
-  // ☝️ এখন বুঝবে — client-এ localStorage data load হয়ে গেছে
+  
 }, []);
 
 
@@ -103,15 +109,21 @@ const markAsDone = (id: number) => {
 
 
 
- const metrics = {
+ const metricsPlan = {
     exercises: plan.length,
     minutes: plan.reduce((total, item) => total + item.duration, 0),
     calories: plan.reduce((total, item) => total + item.caloriesBurned, 0),
+  };
+ const metricssaved = {
+    exercises: saved.length,
+    minutes: saved.reduce((total, item) => total + item.duration, 0),
+    calories: saved.reduce((total, item) => total + item.caloriesBurned, 0),
   };
 
 
    
 const value: PlanContextType = {
+    isHydrated,
     plan,
     saved,
     addToPlan,
@@ -119,7 +131,8 @@ const value: PlanContextType = {
     removeFromPlan,
     removeFromSaved,
     markAsDone,
-    metrics,
+    metricsPlan,
+    metricssaved
   };
 
  return( <PlanContext.Provider value={value}>{children}</PlanContext.Provider>);

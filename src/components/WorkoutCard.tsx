@@ -7,7 +7,7 @@ export default function WorkoutCard({ workout }: { workout: Workout }) {
   return (
     <Link
       href={`/workout/${workout.id}`}
-      className="group block overflow-hidden rounded-2xl border border-white/10 bg-[#222630] transition hover:-translate-y-1 hover:border-[#c2f800]"
+      className="group block overflow-hidden rounded-2xl border border-white/10 bg-[#222630] transition hover:-translate-y-1 hover:border-[#ccff00]"
     >
     
       <div className="relative h-40 w-full overflow-hidden">
@@ -26,7 +26,7 @@ export default function WorkoutCard({ workout }: { workout: Workout }) {
           {workout.muscleGroups.map((muscle) => (
             <span
               key={muscle}
-              className="rounded-full bg-[#c2f800] px-3 py-0.5 text-[11px] font-bold uppercase text-black"
+              className="rounded-full bg-[#ccff00] px-3 py-0.5 text-[11px] font-bold uppercase text-black"
             >
               {muscle}
             </span>
@@ -42,15 +42,15 @@ export default function WorkoutCard({ workout }: { workout: Workout }) {
         
         <div className="mt-4 flex items-center gap-4 rounded-md border border-white/5 px-3 py-2 text-xs text-gray-400">
           <span className="flex items-center gap-2">
-            <LuClock className="size-3.5" />
+            <LuClock className="size-3.5 text-[#ccff00]" />
             {workout.duration} min
           </span>
           <span className="flex items-center gap-2">
-            <LuFlame className="size-3.5" />
+            <LuFlame className="size-3.5 text-[#ccff00]" />
             {workout.caloriesBurned} kcal
           </span>
           <span className="flex items-center gap-2">
-            <LuStar className="size-3.5" />
+            <LuStar className="size-3.5 text-[#ccff00]" />
             {workout.rating}
           </span>
         </div>

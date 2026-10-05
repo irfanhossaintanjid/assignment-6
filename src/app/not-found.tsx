@@ -3,7 +3,7 @@ import Link from "next/link";
 export default function NotFound() {
   return (
     <section className="container mx-auto flex min-h-15 flex-col items-center justify-center px-5 py-20 text-center">
-      <h1 className=" text-6xl font-bold text-[#c2f800] sm:text-9xl">
+      <h1 className=" text-6xl font-bold text-[#ccff00] sm:text-9xl">
         404
       </h1>
 
@@ -17,7 +17,7 @@ export default function NotFound() {
 
       <Link
         href="/"
-        className="mt-8 inline-block rounded-lg bg-[#c2f800] px-6 py-3 text-sm font-bold uppercase text-black transition hover:bg-lime-300"
+        className="mt-8 inline-block rounded-lg bg-[#ccff00] px-6 py-3 text-sm font-bold uppercase text-black transition hover:bg-lime-300"
       >
         Back to Home
       </Link>

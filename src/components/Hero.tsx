@@ -6,7 +6,7 @@ const Herocard = () => {
     return (
        <div className="container mx-auto grid grid-cols-1 items-center gap-8 rounded-2xl bg-[#222630] p-5 sm:p-8 md:grid-cols-2 md:p-10">
   <div>
-    <p className="mb-3 text-xs font-bold  text-[#c2f800] sm:text-sm">
+    <p className="mb-3 text-xs font-bold  text-[#ccff00] sm:text-sm">
       WORKOUT LIBRARY
     </p>
 
@@ -21,7 +21,7 @@ const Herocard = () => {
 
     <a
       href="#library"
-      className="mt-6 inline-block rounded-lg bg-[#c2f800] px-5 py-3 text-sm font-bold text-black transition hover:bg-[#a1ca0e]"
+      className="mt-6 inline-block rounded-lg bg-[#ccff00] px-5 py-3 text-sm font-bold text-black transition hover:bg-[#829340]"
     >
       BROWSE WORKOUTS
     </a>

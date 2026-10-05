@@ -4,6 +4,8 @@ import { usePathname } from "next/navigation";
 import { usePlan } from "@/context/PlanContext";
 import Link from "next/link";
 import { useState } from "react";
+import  logo  from "@/assets/logo.png";
+import Image from "next/image";
 
 export default function Navbar() {
   const { plan, saved } = usePlan();
@@ -11,13 +13,22 @@ export default function Navbar() {
  const pathname = usePathname();
 
   return (
-    <div className="container mx-auto p-5 sticky top-0 bg-[#15171d] z-50">
+    <div className=" p-5 sticky top-0 bg-[#15171d] z-50 border-b border-gray-800">
+      <div className="container mx-auto">
       <div className="flex justify-between">
 
-        
-        <div>
-          <p className="text-3xl font-bold">FITLOG</p>
-        </div>
+         <div className="flex gap-2 items-center">
+      <Image
+        src={logo}
+        alt="FITLOG logo"
+        width={32}
+        height={32}
+        className="h-8 w-8 object-contain"
+      />
+       <p className="text-3xl font-bold">FITLOG</p>
+     
+    </div>
+       
 
          
         <div className="hidden md:flex ">
@@ -25,14 +36,14 @@ export default function Navbar() {
           <div className="flex items-center gap-5">
       <Link
         href="/"
-        className={`font-bold ${pathname === "/" ? "text-[#c2f800] rounded-2xl px-5 py-1 bg-[#384701]" : "text-gray-400"}`}
+        className={`font-bold ${pathname === "/" ? "text-[#ccff00] rounded-2xl px-5 py-1 bg-[#273009]" : "text-gray-400"}`}
       >
         Workouts
       </Link>
 
       <Link
         href="/my-plan"
-        className={`font-bold ${pathname === "/my-plan" ? "text-[#c2f800] rounded-2xl px-5 py-1 bg-[#384701]" : "text-gray-400"}`}
+        className={`font-bold ${pathname === "/my-plan" ? "text-[#ccff00] rounded-2xl px-5 py-1 bg-[#273009]" : "text-gray-400"}`}
       >
         My Plan
       </Link>
@@ -42,11 +53,11 @@ export default function Navbar() {
         
         <div className="hidden md:flex gap-5">
           <Link className="font-bold" href="/my-plan">
-            Plan{ <span className="ml-1 rounded-full bg-[#c2f800]  px-2 py-1 text-xs font-bold text-black">{plan.length}</span>}
+            Plan { <span className="ml-1 rounded-full bg-[#ccff00]  px-2 py-1 text-xs font-bold text-black">{plan.length}</span>}
           </Link>
 
           <Link className="font-bold" href="/my-plan">
-            Saved { <span className="ml-1 rounded-full border border-gray-500 px-2 py-1 text-xs font-bold text-gray-400">{saved.length}</span>}
+            Saved { <span className="ml-1 rounded-full border border-gray-500 px-2 py-1 text-xs font-bold ">{saved.length}</span>}
           </Link>
         </div>
 
@@ -90,23 +101,24 @@ export default function Navbar() {
     
       {isOpen && (
         <div className="mt-5 flex flex-col gap-4 md:hidden">
-          <Link href="/" onClick={() => setIsOpen(false)}>
+          <Link href="/" className={`${pathname === "/" ? "text-[#ccff00] rounded px-5 py-1 bg-[#273009]" : "text-gray-400"}`} onClick={() => setIsOpen(false)}>
             Workouts
           </Link>
 
-          <Link href="/my-plan" onClick={() => setIsOpen(false)}>
+          <Link href="/my-plan"  className={`${pathname === "/my-plan" ? "text-[#ccff00] rounded px-5 py-1 bg-[#273009]" : "text-gray-400"}`} onClick={() => setIsOpen(false)}>
             My Plan
           </Link>
 
           <Link href="/my-plan" onClick={() => setIsOpen(false)}>
-            Plan
+            Plan { <span className="ml-1 rounded-full bg-[#ccff00]  px-2 py-1 text-xs font-bold text-black">{plan.length}</span>}
           </Link>
 
           <Link href="/my-plan" onClick={() => setIsOpen(false)}>
-            Saved
+            Saved{ <span className="ml-1 rounded-full border border-gray-500 px-2 py-1 text-xs font-bold text-gray-400">{saved.length}</span>}
           </Link>
         </div>
       )}
+    </div>
     </div>
   );
 }

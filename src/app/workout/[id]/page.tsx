@@ -5,7 +5,7 @@ import { usePlan } from "@/context/PlanContext";
 import { getWorkoutById } from "@/utils/api";
 import { Workout } from "@/types";
 import Image from "next/image";
-import { LuBookmark, LuClipboardPlus } from "react-icons/lu";
+import { LuBookmark, LuClipboardPlus, } from "react-icons/lu";
 import Link from "next/link";
 import { useParams } from "next/navigation";
 
@@ -37,14 +37,18 @@ export default function WorkoutDetails() {
     loadWorkout();
   }, [id]);
 
-  if (loading) {
+ if (loading) {
     return (
-      <div className="flex justify-center py-20">
+    <div className=" ">
+    <div id="library" className="flex justify-center py-20">
         <span className="loading loading-spinner loading-lg text-info"></span>
-      </div>
-    );
-
-}
+    </div>
+    <div className="py-12 text-center text-gray-400">
+      Loading Workout Details...
+    </div>
+    </div>
+  );
+  }
 
 if (!workout) {
   return <div>
@@ -92,7 +96,7 @@ if (!workout) {
         {workout.muscleGroups.map((m) => (
           <span
             key={m}
-            className="badge  bg-[#c2f800] font-bold text-black"
+            className="badge  bg-[#ccff00] font-bold text-black"
           >
             {m}
           </span>
@@ -192,16 +196,16 @@ if (!workout) {
 <button
   onClick={() => addToPlan(workout)}
   // disabled={isPlanFull || isAlreadyInPlan}
-  className={`bg-[#c2f800] text-black   px-4 py-2   rounded-md ${isAlreadyInPlan ? "bg-gray-800" : "bg-[#c2f800]  hover:bg-lime-600"}`}
+  className={`bg-[#ccff00] text-black font-bold  px-4 py-2   rounded-md ${isAlreadyInPlan ? "bg-gray-700 text-gray-400 " : "bg-[#ccff00]  hover:bg-lime-600"}`}
 >
 
-  {isAlreadyInPlan ? "Already in Plan" : isPlanFull ? "Plan Full" :<span className="flex justify-between gap-2 items-center"> <LuClipboardPlus className="size-4" />Add to today's plan</span>}
+  {isAlreadyInPlan ? "Already in Plan ✓" : isPlanFull ? `"Plan Full"` :<span className="flex justify-between gap-2 items-center "> <LuClipboardPlus className="size-4 " />Add to today's plan</span>}
   
 </button>
 
-<button onClick={() => addToSaved(workout)} className={`bg-[#222630]   rounded-md   hover:bg-gray-500  px-4 py-2  ${isAlreadySave ? "bg-gray-800 text-black" : "bg-[#222630] hover:bg-gray-500 border border-gray-500  text-white"}`}>
+<button onClick={() => addToSaved(workout)} className={`bg-[#222630] font-bold  rounded-md    px-4 py-2  ${isAlreadySave ? "bg-gray-700 text-gray-400" : "bg-[#222630] hover:bg-gray-500 border border-gray-500  text-white"}`}>
  
-  {isAlreadySave ? "Already saved" :<span className="flex justify-center items-center gap-2"> <LuBookmark className="size-4" /> Save for later</span>}
+  {isAlreadySave ? "Already saved ✓" :<span className="flex justify-center items-center gap-2"> <LuBookmark className="size-4" /> Save for later</span>}
 </button>
 
       </div>

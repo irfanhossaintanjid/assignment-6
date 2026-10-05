@@ -1,6 +1,6 @@
 <div align="center">
 
-# 🏋️ FitLog
+#  FitLog
 
 **Train with intent. Log every set.**
 
