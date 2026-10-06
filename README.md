@@ -37,4 +37,4 @@ FitLog is a workout website. You can see many workouts, open one to read the det
 
 ## 🌐 Live Link
 
-👉 **[View FitLog Live](http://localhost:3000/)**
+👉 **[View FitLog Live](https://assignment-6-chi-virid.vercel.app)**
