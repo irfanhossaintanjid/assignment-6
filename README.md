@@ -13,6 +13,12 @@
 FitLog is a workout website. You can see many workouts, open one to read the details, add workouts to today's plan, and save workouts for later.
 ---
 
+## 📸 Preview / Screenshot
+
+<img width="194" height="372" alt="image" src="https://github.com/user-attachments/assets/e1db2ce8-8729-4473-8898-ad0c68a6faa5" />
+
+
+---
 ## 🛠️ Technologies
 
 | Technology          | Purpose                                      |
@@ -35,6 +41,39 @@ FitLog is a workout website. You can see many workouts, open one to read the det
 
 ---
 
-## 🌐 Live Link
+## 🚀 Run Locally
 
-👉 **[View FitLog Live](https://assignment-6-chi-virid.vercel.app)**
+### Prerequisites
+
+- [Node.js](https://nodejs.org/) 20.9 or later
+- npm (included with Node.js)
+
+### Setup
+
+1. Clone the repository and open the project directory:
+
+   ```bash
+   git clone https://github.com/irfanhossaintanjid/assignment-6.git
+   cd assignment-6
+   ```
+
+2. Install dependencies:
+
+   ```bash
+   npm ci
+   ```
+
+3. Start the development server:
+
+   ```bash
+   npm run dev
+   ```
+
+4. Open [http://localhost:3000](http://localhost:3000) in your browser.
+
+To create and run a production build, use:
+
+```bash
+npm run build
+npm run start
+```
