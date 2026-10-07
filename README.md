@@ -53,8 +53,8 @@ FitLog is a workout website. You can see many workouts, open one to read the det
 1. Clone the repository and open the project directory:
 
    ```bash
-   git clone https://github.com/irfanhossaintanjid/assignment-6.git
-   cd assignment-6
+   git clone https://github.com/irfanhossaintanjid/fitLog.git
+   cd fitLog
    ```
 
 2. Install dependencies:
